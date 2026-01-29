@@ -36,7 +36,7 @@ export interface TabBarStyle {
   activeColor: string
 }
 
-// 定义组件
+// todo 定义组件
 export const component = {
   id: 'TabBar',
   name: '底部导航',
@@ -52,27 +52,21 @@ export const component = {
     items: [
       {
         text: '首页',
-        url: '/pages/index/index',
-        iconUrl: 'http://mall.yudao.iocoder.cn/static/images/1-001.png',
-        activeIconUrl: 'http://mall.yudao.iocoder.cn/static/images/1-002.png'
+        url: '/pages/index/index'
       },
       {
         text: '分类',
-        url: '/pages/index/category?id=3',
-        iconUrl: 'http://mall.yudao.iocoder.cn/static/images/2-001.png',
-        activeIconUrl: 'http://mall.yudao.iocoder.cn/static/images/2-002.png'
+        url: '/pages/index/category?id=3'
       },
       {
         text: '购物车',
-        url: '/pages/index/cart',
-        iconUrl: 'http://mall.yudao.iocoder.cn/static/images/3-001.png',
-        activeIconUrl: 'http://mall.yudao.iocoder.cn/static/images/3-002.png'
+        url: '/pages/index/cart'
       },
       {
         text: '我的',
         url: '/pages/index/user',
-        iconUrl: 'http://mall.yudao.iocoder.cn/static/images/4-001.png',
-        activeIconUrl: 'http://mall.yudao.iocoder.cn/static/images/4-002.png'
+        iconUrl: 'http://xxx/xx/4-001.png',
+        activeIconUrl: 'http://xxx/xx/4-001.png'
       }
     ]
   }
