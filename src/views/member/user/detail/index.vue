@@ -45,7 +45,8 @@
           <el-tab-pane label="收货地址" lazy>
             <UserAddressList :user-id="id" />
           </el-tab-pane>
-          <el-tab-pane label="订单管理" lazy>
+          <!-- 依赖 mall 模块，暂时注释 -->
+          <!-- <el-tab-pane label="订单管理" lazy>
             <UserOrderList :user-id="id" />
           </el-tab-pane>
           <el-tab-pane label="售后管理" lazy>
@@ -59,7 +60,7 @@
           </el-tab-pane>
           <el-tab-pane label="推广用户" lazy>
             <UserBrokerageList :bind-user-id="id" />
-          </el-tab-pane>
+          </el-tab-pane> -->
         </el-tabs>
       </el-card>
     </el-row>
@@ -76,14 +77,14 @@ import UserForm from '@/views/member/user/UserForm.vue'
 import UserAccountInfo from './UserAccountInfo.vue'
 import UserAddressList from './UserAddressList.vue'
 import UserBasicInfo from './UserBasicInfo.vue'
-import UserBrokerageList from './UserBrokerageList.vue'
-import UserCouponList from './UserCouponList.vue'
+// import UserBrokerageList from './UserBrokerageList.vue'
+// import UserCouponList from './UserCouponList.vue'
 import UserExperienceRecordList from './UserExperienceRecordList.vue'
-import UserOrderList from './UserOrderList.vue'
+// import UserOrderList from './UserOrderList.vue'
 import UserPointList from './UserPointList.vue'
 import UserSignList from './UserSignList.vue'
-import UserFavoriteList from './UserFavoriteList.vue'
-import UserAfterSaleList from './UserAftersaleList.vue'
+// import UserFavoriteList from './UserFavoriteList.vue'
+// import UserAfterSaleList from './UserAftersaleList.vue'
 import UserBalanceList from './UserBalanceList.vue'
 import { CardTitle } from '@/components/Card/index'
 import { ElMessage } from 'element-plus'
