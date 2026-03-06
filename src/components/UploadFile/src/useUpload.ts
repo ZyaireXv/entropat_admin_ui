@@ -9,11 +9,13 @@ export const getUploadUrl = (): string => {
   return import.meta.env.VITE_BASE_URL + import.meta.env.VITE_API_URL + '/infra/file/upload'
 }
 
-export const useUpload = (directory?: string) => {
+export const useUpload = (directory?: string, configId?: number) => {
   // 后端上传地址
   const uploadUrl = getUploadUrl()
   // 是否使用前端直连上传
   const isClientUpload = UPLOAD_TYPE.CLIENT === import.meta.env.VITE_UPLOAD_TYPE
+  // 当业务显式传入 configId 时，强制走前端直传，保证文件进入指定桶。
+  const shouldUseClientUpload = isClientUpload || !!configId
   // 重写ElUpload上传方法
   const httpRequest = async (options: UploadRequestOptions) => {
     // 文件上传进度监听
@@ -24,11 +26,11 @@ export const useUpload = (directory?: string) => {
     }
 
     // 模式一：前端上传
-    if (isClientUpload) {
+    if (shouldUseClientUpload) {
       // 1.1 生成文件名称
       const fileName = options.file.name || options.filename
       // 1.2 获取文件预签名地址
-      const presignedInfo = await FileApi.getFilePresignedUrl(fileName, directory)
+      const presignedInfo = await FileApi.getFilePresignedUrl(fileName, directory, configId)
       // 1.3 上传文件（不能使用 ElUpload 的 ajaxUpload 方法的原因：其使用的是 FormData 上传，Minio 不支持）
       return axios
         .put(presignedInfo.uploadUrl, options.file, {

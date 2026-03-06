@@ -87,7 +87,8 @@ const props = defineProps({
   drag: propTypes.bool.def(false), // 拖拽上传
   isShowTip: propTypes.bool.def(true), // 是否显示提示
   disabled: propTypes.bool.def(false), // 是否禁用上传组件 ==> 非必传（默认为 false）
-  directory: propTypes.string.def(undefined) // 上传目录 ==> 非必传（默认为 undefined）
+  directory: propTypes.string.def(undefined), // 上传目录 ==> 非必传（默认为 undefined）
+  configId: propTypes.number.def(undefined) // 指定上传配置，用于将视频固定上传到公开桶
 })
 
 // ========== 上传相关 ==========
@@ -96,7 +97,7 @@ const uploadList = ref<UploadUserFile[]>([])
 const fileList = ref<UploadUserFile[]>([])
 const uploadNumber = ref<number>(0)
 
-const { uploadUrl, httpRequest } = useUpload(props.directory)
+const { uploadUrl, httpRequest } = useUpload(props.directory, props.configId)
 
 // 文件上传之前判断
 const beforeUpload: UploadProps['beforeUpload'] = (file: UploadRawFile) => {

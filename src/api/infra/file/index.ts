@@ -28,10 +28,11 @@ export const deleteFileList = (ids: number[]) => {
 }
 
 // 获取文件预签名地址
-export const getFilePresignedUrl = (name: string, directory?: string) => {
+// 增加 configId 的原因：教程视频需要强制上传到公开桶，不能依赖默认主配置。
+export const getFilePresignedUrl = (name: string, directory?: string, configId?: number) => {
   return request.get<FilePresignedUrlRespVO>({
     url: '/infra/file/presigned-url',
-    params: { name, directory }
+    params: { name, directory, configId }
   })
 }
 
